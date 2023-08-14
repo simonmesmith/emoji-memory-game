@@ -26,15 +26,36 @@ const shuffleArray = (array) => {
 
 const GameBoard = () => {
     const [board, setBoard] = useState(generateBoard());
+    const [cards, setCards] = useState(
+        generateBoard().map((emoji) => ({
+            emoji: emoji,
+            state: 'hidden' // states: hidden, revealed, matched
+        }))
+    );
+    const handleCardClick = (index) => {
+        let newCards = [...cards];
+        newCards[index].state = 'revealed';
+        setCards(newCards);
 
+        const revealedCards = newCards.filter((card) => card.state === 'revealed');
+        if (revealedCards.length === 2) {
+            // If cards match
+            if (revealedCards[0].emoji === revealedCards[1].emoji) {
+                // Logic to handle match
+            } else {
+                // Logic to handle mismatch
+            }
+        }
+    };
     return (
-        <div className="flex flex-wrap w-72">
-            {board.map((emoji, index) => (
+        <div className="flex flex-wrap justify-center">
+            {cards.map((card, index) => (
                 <div
                     key={index}
                     className="w-12 h-12 border border-gray-400 flex items-center justify-center"
+                    onClick={() => handleCardClick(index)}
                 >
-                    {emoji}
+                    {card.state === 'hidden' ? '?' : card.emoji}
                 </div>
             ))}
         </div>
