@@ -48,7 +48,7 @@ const GameBoard = () => {
         }
     };
     return (
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap w-72">
             {cards.map((card, index) => (
                 <div
                     key={index}
