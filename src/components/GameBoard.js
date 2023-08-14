@@ -32,32 +32,72 @@ const GameBoard = () => {
             state: 'hidden' // states: hidden, revealed, matched
         }))
     );
+    const [turns, setTurns] = useState(0);
+
     const handleCardClick = (index) => {
+
+        if (cards[index].state !== 'hidden') return; // Ignore already revealed or matched cards
+
         let newCards = [...cards];
         newCards[index].state = 'revealed';
         setCards(newCards);
 
-        const revealedCards = newCards.filter((card) => card.state === 'revealed');
+        const revealedCards = newCards.map((card, idx) => ({
+            card: card,
+            index: idx
+        })).filter((item) => item.card.state === 'revealed');
+
         if (revealedCards.length === 2) {
-            // If cards match
-            if (revealedCards[0].emoji === revealedCards[1].emoji) {
-                // Logic to handle match
+            setTurns(turns + 1);
+            if (revealedCards[0].card.emoji === revealedCards[1].card.emoji) {
+                // Matched
+                revealedCards.forEach((item) => {
+                    newCards[item.index].state = 'matched';
+                });
+                setCards(newCards);
             } else {
-                // Logic to handle mismatch
+                // Mismatched
+                setTimeout(() => {
+                    revealedCards.forEach((item) => {
+                        newCards[item.index].state = 'hidden';
+                    });
+                    setCards(newCards);
+                }, 1000); // 1-second delay to show the cards before hiding
             }
         }
     };
+
+    const isGameWon = cards.every((card) => card.state === 'matched');
+
+    const restartGame = () => {
+        setCards(
+            generateBoard().map((emoji) => ({
+                emoji: emoji,
+                state: 'hidden' // states: hidden, revealed, matched
+            }))
+        );
+        setTurns(0);
+    };
+
     return (
-        <div className="flex flex-wrap w-72">
-            {cards.map((card, index) => (
-                <div
-                    key={index}
-                    className="w-12 h-12 border border-gray-400 flex items-center justify-center"
-                    onClick={() => handleCardClick(index)}
-                >
-                    {card.state === 'hidden' ? '?' : card.emoji}
-                </div>
-            ))}
+        <div>
+            <div className="text-center mb-4">
+                {isGameWon ? "Congratulations! You've won!" : `Turns: ${turns}`}
+            </div>
+            <div className="flex flex-wrap w-72">
+                {cards.map((card, index) => (
+                    <div
+                        key={index}
+                        className="w-12 h-12 border border-gray-400 flex items-center justify-center"
+                        onClick={() => handleCardClick(index)}
+                    >
+                        {card.state === 'hidden' ? '?' : card.emoji}
+                    </div>
+                ))}
+            </div>
+            <button onClick={restartGame} className="mt-4 p-2 bg-blue-500 text-white">
+                Restart
+            </button>
         </div>
     );
 
