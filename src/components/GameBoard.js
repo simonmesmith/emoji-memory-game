@@ -81,6 +81,7 @@ const GameBoard = () => {
 
     return (
         <div>
+            <h1 className="text-4xl font-bold text-center mb-6">Emoji Memory Game</h1>
             <div className="text-center mb-4">
                 {isGameWon ? "Congratulations! You've won!" : `Turns: ${turns}`}
             </div>
@@ -88,7 +89,10 @@ const GameBoard = () => {
                 {cards.map((card, index) => (
                     <div
                         key={index}
-                        className="w-12 h-12 border border-gray-400 flex items-center justify-center"
+                        className={`w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-200 border ${card.state === 'hidden'
+                            ? 'border-gray-600 bg-gray-400'
+                            : 'border-gray-300 bg-gray-200'
+                            }`}
                         onClick={() => handleCardClick(index)}
                     >
                         {card.state === 'hidden' ? '?' : card.emoji}
