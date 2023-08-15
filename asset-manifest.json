@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/emoji-memory-game/static/css/main.eb88b443.css",
-    "main.js": "/emoji-memory-game/static/js/main.248998ce.js",
+    "main.js": "/emoji-memory-game/static/js/main.d8ba947b.js",
     "static/js/787.e5077f1b.chunk.js": "/emoji-memory-game/static/js/787.e5077f1b.chunk.js",
     "index.html": "/emoji-memory-game/index.html",
     "main.eb88b443.css.map": "/emoji-memory-game/static/css/main.eb88b443.css.map",
-    "main.248998ce.js.map": "/emoji-memory-game/static/js/main.248998ce.js.map",
+    "main.d8ba947b.js.map": "/emoji-memory-game/static/js/main.d8ba947b.js.map",
     "787.e5077f1b.chunk.js.map": "/emoji-memory-game/static/js/787.e5077f1b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eb88b443.css",
-    "static/js/main.248998ce.js"
+    "static/js/main.d8ba947b.js"
   ]
 }
