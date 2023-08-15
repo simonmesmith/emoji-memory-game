@@ -13,9 +13,11 @@ const GameBoard = () => {
 
     return (
         <div>
-            <h1 className="text-4xl font-bold text-center mb-6">Emoji Memory Game</h1>
+            <h1 className="text-4xl font-bold text-center mb-6 text-blue-600">
+                Emoji Memory Game
+            </h1>
             <GameStatus isGameWon={isGameWon} turns={turns} />
-            <div className="flex flex-wrap w-72">
+            <div className="flex flex-wrap justify-center max-w-screen-md mx-auto">
                 {cards.map((card, index) => (
                     <Card key={index} card={card} index={index} onCardClick={handleCardClick} />
                 ))}
