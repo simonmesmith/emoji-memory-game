@@ -1,6 +1,24 @@
 # Emoji Memory Game by ChatGPT
 
-This was an experiment to get ChatGPT (GPT-4 version) to write an emoji memory game from scratch. [Play the game](https://www.simonsmith.ca/emoji-memory-game/)
+This was an experiment to get ChatGPT (GPT-4 version) to write an emoji memory game from scratch. [Play the game](https://www.simonsmith.ca/emoji-memory-game/)!
+
+## v2.0.0
+
+### Conversation
+
+[See the full v2.0.0 conversation with ChatGPT here](https://chat.openai.com/share/e9b9be46-ac79-4856-a524-55dc7f73e8ab).
+
+### Approach
+
+Tell ChatGPT what issues I want to fix, let it propose fixes, test those fixes, provide feedback, and merge everything when it's ready.
+
+### Takeaways
+
+It took **about 40 minutes** to refactor the code and improve the design and animation. Some things that I observed:
+
+* **ChatGPT can refactor code**, but it was initially quite conservative, proposing only a few changes. I had to encourage it to make more changes to improve readability and maintainability.
+* **It can improve design and add animation upon prompting**. It did a much better job with the user interface during this round than it did in the initial round. It does seem to have a design sensibility, though it did initially suggest a quite garish title background that it removed after my feedback.
+* **Context length became an issue here.** For the last task in this round of improvements, I asked ChatGPT if it knew what that task was, which I had told it in the first message. It didn't seem to be aware of it, so we had to start over. It would be good if the ChatGPT interface let you know when you had exceeded the model's context window so you could know when to give it missing context.
 
 ## v1.0.0
 
